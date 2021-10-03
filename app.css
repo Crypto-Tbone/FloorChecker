@@ -39,3 +39,25 @@ a:link {
 a:visited {
   color: green;
 }
+
+#tbid  img {
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 5px #999;
+  box-shadow: 0 0 5px #999;
+ }
+
+ table {
+	width: 800px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(61, 41, 41, 0.2);
+	color: #fff;
+}
+
