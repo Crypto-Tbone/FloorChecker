@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
   let random = Math.floor(Math.random()*999)+1;
-  fetch("https://api.giphy.com/v1/gifs/search?q=Not gonna make it&offset="+ random +"&api_key=8jsnBo9dDCBW3d7lCTTKxCSmz7MMwtEy&limit=1", requestOptions)
+  fetch("https://api.giphy.com/v1/gifs/search?q=Not gonna make it&offset="+ random +"&rating=pg&api_key=8jsnBo9dDCBW3d7lCTTKxCSmz7MMwtEy&limit=1", requestOptions)
     .then(response => response.json())
     .then(result => setgif(result.data[0].images.downsized_medium.url))
     .catch(error => console.log('error', error));
