@@ -29,3 +29,13 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* unvisited link */
+a:link {
+  color: yellow;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+}

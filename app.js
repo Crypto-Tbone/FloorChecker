@@ -2,7 +2,9 @@
 let ethAddress = "";
 let gifDiv ;
 let tbody ;
-let makeRowEntry = (assImg, assName, assFloor) =>`<tr><th> <img height="50" src="${assImg}"/></th><th>${assName}</th><th>${assFloor}</th></tr>`;
+
+
+let makeRowEntry = (assImg, assName, assFloor) =>`<tr><th> <img height="50" src="${assImg}"/></th><th><a href="https://opensea.io/collection/${assName}?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW" target="_blank">${assName}</a></th><th>${assFloor}</th></tr>`;
 
 function parseData(collecs){
   let uiData = collecs.map(item => ({
@@ -18,7 +20,7 @@ function parseData(collecs){
   uiData.forEach(colele => {
     dataHtml = dataHtml + makeRowEntry(colele.collecImg,colele.collecName,colele.collecFlPrice);
   });
- console.log(dataHtml);
+
  tbody.innerHTML = dataHtml;
 
 }
