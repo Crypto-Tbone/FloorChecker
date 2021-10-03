@@ -72,8 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   })
 
+  //get url from window and search
   if(location.search.split('q=')[1]){
     document.getElementById("ethAddressInput").value = location.search.split('q=')[1];
+    get_floors()
   }
 
   var requestOptions = {
