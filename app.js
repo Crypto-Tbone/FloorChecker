@@ -30,6 +30,16 @@ function get_floors() {
   ethAddress = document.getElementById("ethAddressInput").value;
 
   console.log("Getting assets for : " + ethAddress);
+  
+  //add query to history
+  if(history.pushState){
+    let newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?q=" + ethAddress ;
+    window.history.pushState({
+      path : newUrl
+    }, '', newUrl);
+  }
+
+
 
   // get all assets
   var requestOptions = {
@@ -61,6 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
       get_floors()
     }
   })
+
+  if(location.search.split('q=')[1]){
+    document.getElementById("ethAddressInput").value = location.search.split('q=')[1];
+  }
 
   var requestOptions = {
     method: 'GET',
