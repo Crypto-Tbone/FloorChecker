@@ -5,9 +5,15 @@
     <link rel="stylesheet" type="text/css" href="app.css">
 </head>
 <body text="#ffffff">
-    <div style="margin: 50px;">
+    <div style="margin: 30px;">
         <input type="text" placeholder="Paste Opensea/wallet address & hit enter to get floor prices" id="ethAddressInput"/>
     </div>
+    <div class="container" >
+        <div class="child">
+            <label>Total ETH value at floor price : </label>
+            <label id="totalValue">0.0</label>
+        </div>
+      </div>
     <div style="padding: 8px;" class="container">
         <table width="100%" border="1" cellspacing="0" cellpadding="6" id="tbid">
             <tbody id = "floortable">

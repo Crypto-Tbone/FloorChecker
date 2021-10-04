@@ -2,26 +2,30 @@
 let ethAddress = "";
 let gifDiv ;
 let tbody ;
+let tValue ;
 
 
-let makeRowEntry = (assImg, assName, assFloor) =>`<tr><th> <img height="50" src="${assImg}"/></th><th><a href="https://opensea.io/collection/${assName}?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW" target="_blank">${assName}</a></th><th>${assFloor}</th></tr>`;
+let makeRowEntry = (assImg, assName, assFloor, assCount) =>`<tr><th> <img height="50" src="${assImg}"/></th><th><a href="https://opensea.io/collection/${assName}?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW" target="_blank">${assName}</a></th><th>${assFloor} (${assCount})</th></tr>`;
 
 function parseData(collecs){
   let uiData = collecs.map(item => ({
     collecName :item.slug, 
     collecImg : item.image_url,
-    collecFlPrice : item.stats.floor_price
+    collecFlPrice : item.stats.floor_price,
+    collecOwnedCount : item.owned_asset_count
   })).sort((a, b) => parseFloat(b.collecFlPrice) - parseFloat(a.collecFlPrice));
 
-  // sort by price
+  let tEValue = 0;
 
-  let dataHtml =  `<tr><th>Image</th><th>Collection Name</th><th>Floor Price ETH</th></tr>`;
+  let dataHtml =  `<tr><th>Image</th><th>Collection Name</th><th>ETH Floor Price (Count)</th></tr>`;
   // add to html
   uiData.forEach(colele => {
-    dataHtml = dataHtml + makeRowEntry(colele.collecImg,colele.collecName,colele.collecFlPrice);
+    tEValue = tEValue + colele.collecFlPrice * colele.collecOwnedCount;
+    dataHtml = dataHtml + makeRowEntry(colele.collecImg,colele.collecName,colele.collecFlPrice, colele.collecOwnedCount);
   });
-
- tbody.innerHTML = dataHtml;
+  
+  tValue.innerHTML = tEValue;
+  tbody.innerHTML = dataHtml;
 
 }
 
@@ -67,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   tbody = document.getElementById("floortable");
   gifDiv = document.getElementById("gifs");
+  tValue = document.getElementById("totalValue");
  
   document.body.addEventListener('keyup', function(event){
     if(event.key === 'Enter'){
