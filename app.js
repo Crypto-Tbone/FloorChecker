@@ -20,7 +20,12 @@ function parseData(collecs) {
 
   Promise.all(
     collecs.map(element =>
-      fetch("https://api.opensea.io/api/v1/collection/" + element.slug + "/stats")
+      fetch("https://api.opensea.io/api/v1/collection/" + element.slug + "/stats",{
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
       .then(response => response.json())
       .catch(error => console.log('error', error))
     )
