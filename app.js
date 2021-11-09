@@ -1,11 +1,20 @@
 //Init
 let ethAddress = "";
 let gifDiv;
+let loadingImg;
 let tbody;
 let tValue;
 
 
 let makeRowEntry = (assImg, assName, assFloor, assCount) => `<tr><th> <img height="50" src="${assImg}"/></th><th><a href="https://opensea.io/collection/${assName}?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW" target="_blank">${assName}</a></th><th>${assFloor} (${assCount})</th></tr>`;
+
+function toggleLoading() {
+  if (loadingImg.style.display === 'none') {
+    loadingImg.style.display = 'block';
+  } else if (loadingImg.style.display === 'block') {
+    loadingImg.style.display = 'none';
+  }
+}
 
 function parseData(collecs) {
 
@@ -39,12 +48,14 @@ function parseData(collecs) {
 
     tValue.innerHTML = tEValue;
     tbody.innerHTML = dataHtml;
+    toggleLoading();
 
   });
 }
 
 //get all assets from address
 function get_floors() {
+  toggleLoading();
 
   //ethadd
   ethAddress = document.getElementById("ethAddressInput").value;
@@ -85,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   tbody = document.getElementById("floortable");
   gifDiv = document.getElementById("gifs");
+  loadingImg = document.getElementById("loading");
   tValue = document.getElementById("totalValue");
 
   document.body.addEventListener('keyup', function (event) {
