@@ -1,4 +1,4 @@
-# FloorChecker
+# FloorChecker - https://crypto-tbone.github.io/FloorChecker/
 
 - VanillaJs OpenSea floor price checker
 - Max 300 collections
